@@ -18,16 +18,21 @@ nav ul {
     padding: 0;
     display: flex;
     justify-content: center;
-    color: #ffffff;
 }
 
 nav li {
-    margin: 0 10px;
+    margin: 0 15px;
 }
 
 nav a {
     text-decoration: none;
     color: #333333;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #01aff0;
 }
 
 main {
