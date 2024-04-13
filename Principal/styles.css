@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f8f8f8;
+    background-color: #ebebeb;
 }
 
 header {
@@ -13,7 +13,6 @@ header {
 }
 
 nav ul {
-    background-color: #fffb91;
     list-style-type: none;
     padding: 0;
     display: flex;
@@ -36,8 +35,89 @@ nav a:hover {
 }
 
 main {
-    background-color: #f25488;
+    background-color: #fff;
     padding: 20px;
+}
+
+button {
+    background-color: #01aff0;
+    box-shadow: 0 2px 5px #00608d;
+    margin: 0 10px 10px 10px;
+    border: none;
+    width: 110px;
+    height: 25px;
+    border-radius: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.topo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.painel-topo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    width: 35%;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+.painel-topo img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.sobre {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.conteudo-sobre-01 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px black;
+}
+
+.conteudo-sobre-02 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px black;
+}
+
+.painel-sobre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    width: 50%;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+.painel-sobre img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
 }
 
 .carousel {
@@ -69,7 +149,7 @@ main {
 .card:hover {
     transform: translate3d(0px, 0px, 0px) scale3d(1.02, 1.02, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
     transform-style: preserve-3d;
-    box-shadow: 0 2px 5px #01aff0;
+    box-shadow: 0 2px 5px #00608d;
     cursor: pointer;
 }
 
