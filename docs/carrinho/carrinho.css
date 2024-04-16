@@ -90,6 +90,25 @@ section {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.39);
 }
 
+#produtos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#carrinho {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+#produtos img {
+    width: 20%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
 footer {
     background-color: #333;
     color: #fff;

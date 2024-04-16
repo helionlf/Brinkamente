@@ -2,36 +2,68 @@ const itens = [
     {
         id: 0,
         nome: 'brinquedo 01',
-        img: 'caminho da imagem',
+        img: 'imagens-produtos/imagem-02.jpg',
         quantidade: 0
     },
 
     {
         id: 1,
         nome: 'brinquedo 02',
-        img: 'caminho da imagem',
+        img: 'imagens-produtos/imagem-02.jpg',
         quantidade: 0
     },
 
     {
         id: 2,
         nome: 'brinquedo 03',
-        img: 'caminho da imagem',
+        img: 'imagens-produtos/imagem-02.jpg',
         quantidade: 0
     },
 ]
 
 
 inicializarLoja = () => {
-    var containerProdutos = document.getElementsByClassName('produtos');
+    var containerProdutos = document.getElementById('produtos');
     itens.map((valor)=>{
         containerProdutos.innerHTML += `
             <div class="produto-single">
-                <p>`+valor.nome+`</p>
-                <a href="#" onclick="adicionarAoCarrinho(`+valor.id+`)">Adicionar ao carrinho</a>
+                <img src="${valor.img}" />
+                <p>${valor.nome}</p>
+                <a key="${valor.id}" href="#">Adicionar ao carrinho!</a>
             </div>
         `;
     })
 }
 
 inicializarLoja();
+
+
+atualizarCarrinho = () => {
+    var containerCarrinho = document.getElementById('carrinho');
+    containerCarrinho.innerHTML = "";
+    itens.map((valor)=>{
+        if(valor.quantidade > 0) {
+            containerCarrinho.innerHTML += `
+                <p>${valor.nome} | Quantidade: ${valor.quantidade}</p>
+            `;
+        }
+    })
+}
+
+var links = document.getElementsByTagName('a');
+
+for(var i = 0; i < links.length; i++) {
+    links[i].addEventListener("click", function() {
+        let key = this.getAttribute('key');
+        itens[key].quantidade++;
+        atualizarCarrinho();
+        return false;
+    })
+}
+
+
+
+
+
+
+
