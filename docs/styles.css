@@ -98,7 +98,7 @@ button {
     justify-content: center;
     align-items: center;
     margin-bottom: 50px;
-    /* background: linear-gradient(#01aff0, #ffffff); */
+    background: linear-gradient(#fff, #ccc8c8);
 }
 
 .painel-topo {
