@@ -28,7 +28,7 @@ header div button {
     margin: 0;
 }
 
-nav ul {
+/* nav ul {
     list-style-type: none;
     padding: 0;
     display: flex;
@@ -48,14 +48,14 @@ nav a {
 
 nav a:hover {
     color: #01aff0;
-}
+} */
 
 main {
     background-color: #fff;
     padding: 20px;
 }
 
-button {
+/* button {
     background-color: #01aff0;
     box-shadow: 0 2px 5px #00608d;
     margin: 0 10px 10px 10px;
@@ -90,7 +90,7 @@ button {
 
 .bot span img {
     width: 90%;
-}
+} */
 
 .topo {
     display: flex;
