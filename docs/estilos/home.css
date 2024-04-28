@@ -1,0 +1,215 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ebebeb;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #01aff0;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+
+    /* & div {
+        display: flex;
+        flex-direction: end;
+        justify-content: end;
+        align-items: center;
+        width: 100%;
+
+        & button {
+            margin: 0;
+        }
+    } */
+}
+
+nav {
+    & ul {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+
+        & li {
+            margin: 0 15px;
+
+            & a {
+                text-decoration: none;
+                color: #333333;
+                font-weight: bold;
+                transition: color 0.3s ease;
+            }
+
+            & a:hover {
+                color: #01aff0;
+            }
+        }
+    }
+}
+
+main {
+    background-color: #fff;
+    padding: 20px;
+}
+
+.button-principal {
+    background-color: #01aff0;
+    box-shadow: 0 2px 5px #00608d;
+    margin: 0 10px 10px 10px;
+    border: none;
+    width: 110px;
+    height: 25px;
+    border-radius: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.button-secundario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    box-shadow: none;
+    margin: 0 10px 10px 10px;
+    border: 1px solid #01aff0;
+    width: 140px;
+    height: 25px;
+    border-radius: 20px;
+    color: #01aff0;
+    cursor: pointer;
+}
+
+section {
+    background-color: #fff;
+    margin-bottom: 40px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.39);
+}
+
+.inicio {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    & .painel-inicio {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 35%;
+        margin-bottom: 20px;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    
+        & img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+    }
+}
+
+.sobre {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    & .conteudo-sobre {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+    
+        & .painel-sobre {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            transform: rotate(-2deg);
+            margin: 10px;
+
+            & img {
+                width: 100%;
+                height: 100%;
+                border-radius: 10px;
+            }
+        }
+
+        & .texto-sobre {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin: 0 10px;
+            gap: 3rem;
+
+            & .buttons-texto-sobre {
+                display: flex;
+
+                & .button-secundario {
+                    & span {
+                        width: 13px;
+                        height: 13px;
+                        margin: 5px;
+                    }
+                    
+                    & img {
+                        width: 90%;
+                    }
+                }
+            }
+        }
+    }
+
+    & .paragrafo-sobre {
+        width: 80%;
+        margin: 5px;
+    }
+}
+
+.carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory; 
+    gap: 20px;
+    padding-bottom: 20px;
+    flex-shrink: 0;
+
+    & .card-produto {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        margin: 0.5vw; 
+        width: 22%;
+        flex: 0 0 auto;
+
+        & img {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    }
+
+    & .card-produto:hover {
+        transform: translate3d(0px, 0px, 0px) scale3d(1.02, 1.02, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+        transform-style: preserve-3d;
+        box-shadow: 0 2px 5px #00608d;
+        cursor: pointer;
+    }
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}

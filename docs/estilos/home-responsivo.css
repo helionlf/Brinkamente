@@ -1,0 +1,35 @@
+
+
+@media screen and (max-width: 320px){
+    .conteudo-sobre {
+        flex-direction: column;
+        width: 90%;
+
+        & .painel-sobre {
+            width: 100%;
+        }
+
+        & .texto-sobre {
+
+            & .buttons-texto-sobre {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
+
+                & .button-secundario {
+
+                    & span {
+                        width: 13px;
+                        height: 13px;
+                        margin: 5px;
+                    }
+                    
+                    & img {
+                        width: 90%;
+                    }
+                }
+            }
+        }
+    }
+}
