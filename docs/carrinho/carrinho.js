@@ -1,69 +1,64 @@
-const itens = [
-    {
-        id: 0,
-        nome: 'brinquedo 01',
-        img: 'imagens-produtos/imagem-02.jpg',
-        quantidade: 0
-    },
-
-    {
-        id: 1,
-        nome: 'brinquedo 02',
-        img: 'imagens-produtos/imagem-02.jpg',
-        quantidade: 0
-    },
-
-    {
-        id: 2,
-        nome: 'brinquedo 03',
-        img: 'imagens-produtos/imagem-02.jpg',
-        quantidade: 0
-    },
-]
-
-
-inicializarLoja = () => {
-    var containerProdutos = document.getElementById('produtos');
-    itens.map((valor)=>{
-        containerProdutos.innerHTML += `
-            <div class="produto-single">
-                <img src="${valor.img}" />
-                <p>${valor.nome}</p>
-                <a key="${valor.id}" href="#">Adicionar ao carrinho!</a>
-            </div>
-        `;
-    })
-}
-
-inicializarLoja();
-
-
-atualizarCarrinho = () => {
-    var containerCarrinho = document.getElementById('carrinho');
-    containerCarrinho.innerHTML = "";
-    itens.map((valor)=>{
-        if(valor.quantidade > 0) {
-            containerCarrinho.innerHTML += `
-                <p>${valor.nome} | Quantidade: ${valor.quantidade}</p>
+// Função para inicializar a loja buscando os produtos no servidor
+async function inicializarLoja() {
+    try {
+        const response = await fetch('/api/produtos');
+        const produtos = await response.json();
+        
+        var containerProdutos = document.getElementById('produtos');
+        
+        produtos.forEach((produto) => {
+            containerProdutos.innerHTML += `
+                <div class="produto-single">
+                    <img src="${produto.img}" />
+                    <p>${produto.nome}</p>
+                    <a key="${produto._id}" href="#" class="add-to-cart">Adicionar ao carrinho!</a>
+                </div>
             `;
-        }
-    })
+        });
+
+        // Adicionar evento de clique aos links "Adicionar ao carrinho"
+        var links = document.getElementsByTagName('a');
+        Array.from(links).forEach((link) => {
+            link.addEventListener("click", async function(event) {
+                event.preventDefault();
+                const produtoId = this.getAttribute('key');
+                
+                // Enviar solicitação para adicionar o produto ao carrinho
+                const response = await fetch('/api/produtos/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ produtoId })
+                });
+                
+                // Atualizar o carrinho na interface do usuário
+                atualizarCarrinho();
+            });
+        });
+    } catch (error) {
+        console.error('Erro ao inicializar a loja:', error);
+    }
 }
 
-var links = document.getElementsByTagName('a');
-
-for(var i = 0; i < links.length; i++) {
-    links[i].addEventListener("click", function() {
-        let key = this.getAttribute('key');
-        itens[key].quantidade++;
-        atualizarCarrinho();
-        return false;
-    })
+// Função para atualizar o carrinho na interface do usuário
+async function atualizarCarrinho() {
+    try {
+        const response = await fetch('/api/produtos');
+        const carrinho = await response.json();
+        
+        var containerCarrinho = document.getElementById('carrinho');
+        containerCarrinho.innerHTML = "";
+        
+        carrinho.forEach((item) => {
+            containerCarrinho.innerHTML += `
+                <p>${item.nome} | Quantidade: ${item.quantidade}</p>
+            `;
+        });
+    } catch (error) {
+        console.error('Erro ao atualizar o carrinho:', error);
+    }
 }
 
-
-
-
-
-
-
+// Inicializar a loja ao carregar a página
+window.onload = inicializarLoja;
