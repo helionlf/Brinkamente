@@ -1,20 +1,17 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const cors = require('cors'); // Importe o pacote cors
+const cors = require('cors');
 
 const app = express();
 
-// Configurações do CORS
 app.use(cors());
 
-// Configurando o body-parser para lidar com solicitações JSON
 app.use(bodyParser.json());
 
 // Configurar o servidor web local
-app.use(express.static(__dirname + '/')); // Serve arquivos estáticos na pasta 'public'
+app.use(express.static(__dirname + '/'));
 
-// Rota principal para servir o arquivo HTML
 app.get("/", (req, res) => {
   res.sendFile(__dirname + '/carrinho.html');
 });
@@ -48,7 +45,6 @@ app.get('/produtos', async (req, res) => {
   }
 });
 
-// Iniciando o servidor
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
