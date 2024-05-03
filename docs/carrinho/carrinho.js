@@ -1,4 +1,3 @@
-// Função para inicializar a loja buscando os produtos no servidor
 async function inicializarLoja() {
     try {
         const response = await fetch('/produtos');
@@ -41,7 +40,7 @@ async function inicializarLoja() {
     }
 }
 
-// Função para atualizar o carrinho na interface do usuário
+// Atualizar o carrinho na interface do usuário
 // async function atualizarCarrinho() {
 //     try {
 //         const response = await fetch('/api/produtos');
@@ -60,5 +59,4 @@ async function inicializarLoja() {
 //     }
 // }
 
-// Inicializar a loja ao carregar a página
 window.onload = inicializarLoja;
