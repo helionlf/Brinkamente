@@ -45,6 +45,27 @@ app.get('/produtos', async (req, res) => {
   }
 });
 
+// Rota para obter um produto a parti do seu id;
+app.post('/produtos/add', async (req, res) => {
+  try {
+      console.log("Recebida solicitação para /produtos/add");
+      
+      const produtoId = req.query.produtoId;
+      const produto = await Produto.findOne(produtoId);
+      
+      if (produto) {
+          console.log("Produto encontrado:", produto.nome, "adicionado ao carrinho!");
+          res.status(200).json(produto);
+      } else {
+          console.log("Produto não encontrado");
+          res.status(404).json({ message: "Produto não encontrado" });
+      }
+  } catch (error) {
+      console.error("Erro ao buscar produto:", error);
+      res.status(500).json({ message: error.message });
+  }
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);

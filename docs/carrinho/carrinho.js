@@ -16,47 +16,38 @@ async function inicializarLoja() {
         });
 
         // Adicionar evento de clique aos links "Adicionar ao carrinho"
-        // var links = document.getElementsByTagName('a');
-        // Array.from(links).forEach((link) => {
-        //     link.addEventListener("click", async function(event) {
-        //         event.preventDefault();
-        //         const produtoId = this.getAttribute('key');
+        var links = document.getElementsByClassName('add-to-cart');
+        Array.from(links).forEach((link) => {
+            link.addEventListener("click", async function(event) {
+                event.preventDefault();
+                const produtoId = this.getAttribute('key');
+                console.log(produtoId);
                 
-        //         // Enviar solicitação para adicionar o produto ao carrinho
-        //         const response = await fetch('/api/produtos/add', {
-        //             method: 'POST',
-        //             headers: {
-        //                 'Content-Type': 'application/json'
-        //             },
-        //             body: JSON.stringify({ produtoId })
-        //         });
+                // Enviar solicitação para adicionar o produto ao carrinho
+                const response = await fetch('/produtos/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ produtoId })
+                });
+                const produto = await response.json();
                 
-        //         // Atualizar o carrinho na interface do usuário
-        //         atualizarCarrinho();
-        //     });
-        // });
+                // Atualizar o carrinho na interface do usuário
+                atualizarCarrinho(produto);
+            });
+        });
     } catch (error) {
         console.error('Erro ao inicializar a loja:', error);
     }
 }
 
 // Atualizar o carrinho na interface do usuário
-// async function atualizarCarrinho() {
-//     try {
-//         const response = await fetch('/api/produtos');
-//         const carrinho = await response.json();
-        
-//         var containerCarrinho = document.getElementById('carrinho');
-//         containerCarrinho.innerHTML = "";
-        
-//         carrinho.forEach((item) => {
-//             containerCarrinho.innerHTML += `
-//                 <p>${item.nome} | Quantidade: ${item.quantidade}</p>
-//             `;
-//         });
-//     } catch (error) {
-//         console.error('Erro ao atualizar o carrinho:', error);
-//     }
-// }
+async function atualizarCarrinho(produto) {
+    var containerCarrinho = document.getElementById('carrinho');
+    containerCarrinho.innerHTML += `
+        <p>${produto._id} | ${produto.nome} | Quantidade: ${produto.quantidade}</p>
+    `;
+}
 
 window.onload = inicializarLoja;
