@@ -21,7 +21,6 @@ async function inicializarLoja() {
             link.addEventListener("click", async function(event) {
                 event.preventDefault();
                 const produtoId = this.getAttribute('key');
-                console.log(produtoId);
                 
                 // Enviar solicitação para adicionar o produto ao carrinho
                 const response = await fetch('/produtos/add', {
@@ -29,12 +28,12 @@ async function inicializarLoja() {
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ produtoId })
+                    body: JSON.stringify({ produtoId: produtoId })
                 });
-                const produto = await response.json();
+                const item = await response.json();
                 
                 // Atualizar o carrinho na interface do usuário
-                atualizarCarrinho(produto);
+                atualizarCarrinho(item);
             });
         });
     } catch (error) {
@@ -46,7 +45,7 @@ async function inicializarLoja() {
 async function atualizarCarrinho(produto) {
     var containerCarrinho = document.getElementById('carrinho');
     containerCarrinho.innerHTML += `
-        <p>${produto._id} | ${produto.nome} | Quantidade: ${produto.quantidade}</p>
+        <p>${produto.nome} | Quantidade: ${produto.quantidade}</p>
     `;
 }
 

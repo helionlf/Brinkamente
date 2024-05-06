@@ -50,8 +50,8 @@ app.post('/produtos/add', async (req, res) => {
   try {
       console.log("Recebida solicitação para /produtos/add");
       
-      const produtoId = req.query.produtoId;
-      const produto = await Produto.findOne(produtoId);
+      const produtoId = req.body.produtoId;
+      const produto = await Produto.findById(produtoId);
       
       if (produto) {
           console.log("Produto encontrado:", produto.nome, "adicionado ao carrinho!");
